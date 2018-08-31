@@ -120,7 +120,7 @@
   </fieldset>
 
   <div class="form-group row">
-     <button type="button" class="btn btn-info" id="search" onclick="chalaDo(); formValKrre2()" disabled="true">
+     <button type="button" class="btn btn-info" id="search" onclick="chalaDo(); formValKrre2()">
       <span class="glyphicon glyphicon-search"></span> Search
     </button>
     <button type="reset" class="btn btn-light" value="clear" onclick="clearALL()"> Clear</button>
@@ -233,11 +233,17 @@ function formValKrre2()
     }
                       
 $(document).ready( function() {
+
+  // hardcode default location co-ordinates
+  lat = 34.0224;
+  lon = -118.2851;
+
     $.get("http://ip-api.com/json",
         function(data,statusTxt,xhr){
             
             lat = data.lat;
             lon = data.lon;
+            
            if(lat!="" && lon !="" )
            {
      $('#search').attr('disabled',false);
