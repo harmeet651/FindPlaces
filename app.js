@@ -23,7 +23,7 @@ app.get("/allData", function (req, res) {
 	var temp = req.query;
 	var data = temp.newData;
 
-	urlNp = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + req.query.lat + "," + req.query.lon + "&radius=" + req.query.distance + "&type=" + req.query.catu + "&keyword=" + req.query.key + "&key=AIzaSyC00xSk8OLLyPTwJPMCTxjtOCOYrX-dW6A";
+	urlNp = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + req.query.lat + "," + req.query.lon + "&radius=" + req.query.distance + "&type=" + req.query.catu + "&keyword=" + req.query.key + "&key="+process.env.ENV_VARIABLE;
 	var urlNew = urlNp.replace(/ /g, '+');
 	console.log(urlNp);
 	var urlNew = encodeURI(urlNp);
@@ -53,7 +53,7 @@ app.get("/locWala", function (req, res) {
 	//console.log(req.query);
 	var temp = req.query;
 	var data = temp.newLOC;
-	urlLoc = "https://maps.googleapis.com/maps/api/geocode/json?address=" + req.query.location + "&key=AIzaSyC00xSk8OLLyPTwJPMCTxjtOCOYrX-dW6A";
+	urlLoc = "https://maps.googleapis.com/maps/api/geocode/json?address=" + req.query.location + "&key="+process.env.ENV_VARIABLE;
 	console.log(urlLoc);
 	request.get(urlLoc, (error, response, body) => {
 		let json = JSON.parse(body);
@@ -62,7 +62,7 @@ app.get("/locWala", function (req, res) {
 		console.log(urlNpLo);
 		var b = json.results[0].geometry.location.lat;
 		var c = json.results[0].geometry.location.lng;
-		urlNpLo = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + json.results[0].geometry.location.lat + "," + json.results[0].geometry.location.lng + "&radius=" + req.query.distance + "&type=" + req.query.catu + "&keyword=" + req.query.key + "&key=AIzaSyC00xSk8OLLyPTwJPMCTxjtOCOYrX-dW6A";
+		urlNpLo = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + json.results[0].geometry.location.lat + "," + json.results[0].geometry.location.lng + "&radius=" + req.query.distance + "&type=" + req.query.catu + "&keyword=" + req.query.key + "&key="+process.env.ENV_VARIABLE;
 		console.log(urlNpLo);
 		var urlNew2 = encodeURI(urlNpLo);
 		//console.log(urlNew2);
@@ -94,7 +94,7 @@ app.get("/cadataAya", function (req, res) {
 	var next = temp.cadata;
 	console.log(next);
 	console.log("agai value cadata kijjjjjjj");
-	urlcadata = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=" + next + "&key=AIzaSyC00xSk8OLLyPTwJPMCTxjtOCOYrX-dW6A";
+	urlcadata = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=" + next + "&key="+process.env.ENV_VARIABLE;
 	//var urlcada=encodeURI(urlcadata);
 	console.log("urlcadata ki", urlcadata);
 	request.get({
