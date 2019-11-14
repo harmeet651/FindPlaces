@@ -49,8 +49,6 @@ app.get("/allData", function (req, res) {
 
 
 app.get("/locWala", function (req, res) {
-	//console.log(req.url);
-	//console.log(req.query);
 	var temp = req.query;
 	var data = temp.newLOC;
 	urlLoc = "https://maps.googleapis.com/maps/api/geocode/json?address=" + req.query.location + "&key="+process.env.ENV_VARIABLE;
@@ -87,15 +85,11 @@ app.get("/locWala", function (req, res) {
 });
 
 app.get("/cadataAya", function (req, res) {
-	//console.log(req.url);
-	//console.log(req.query);
-	//console.log(req.query.cadata);
 	var temp = req.query;
 	var next = temp.cadata;
 	console.log(next);
 	console.log("agai value cadata kijjjjjjj");
 	urlcadata = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?pagetoken=" + next + "&key="+process.env.ENV_VARIABLE;
-	//var urlcada=encodeURI(urlcadata);
 	console.log("urlcadata ki", urlcadata);
 	request.get({
 		url: urlcadata,
@@ -120,16 +114,14 @@ app.get("/cadataAya", function (req, res) {
 app.get("/yelpBanaing", function (req, res) {
 	console.log(req.url);
 	console.log(req.query);
-	//console.log(req.query.cadata);
 	var temp = req.query;
 	var next = temp.nameyelp;
 	console.log(next);
 	console.log("agai value cadata ki");
 	yelpUrl = "https://api.yelp.com/v3/businesses/matches/best?name=" + req.query.nameyelp + "&address1=" + req.query.adddr + "&city=" + req.query.cityzz + "&state=" + req.query.statezz + "&country=" + req.query.country;
-	var urlcanada = encodeURI(yelpUrl);
-	//console.log("urlcadata ki",urlcadata);
+	var urlc = encodeURI(yelpUrl);
 	request.get({
-		url: urlcanada,
+		url: urlc,
 		json: true,
 		headers: { 'User-Agent': 'request', 'Authorization': 'Bearer Njza3sFCRA9Ryj9ThYlmY38oXieiZrYlQvvTIe1DUnG89_VajllQVQntnGhSLpKHofkjdo7GYbDuQcyD0sgeaas3E5X6A31g6qMEzv1UmBg1p4EX_utsDkASwHPJWnYx' }
 	}, (err, response, data) => {
@@ -152,15 +144,13 @@ app.get("/yelpBanaing", function (req, res) {
 app.get("/yelpKaTable", function (req, res) {
 	console.log(req.url);
 	console.log(req.query);
-	//console.log(req.query.cadata);
 	var temp = req.query;
 	var next = temp.naviTaziId;
 	console.log(next);
 	yelpFinalUrl = "https://api.yelp.com/v3/businesses/" + req.query.naviTaziId + "/reviews";
-	var urlcanadaAle = encodeURI(yelpFinalUrl);
-	//console.log("urlcadata ki",urlcadata);
+	var urlc2 = encodeURI(yelpFinalUrl);
 	request.get({
-		url: urlcanadaAle,
+		url: urlc2,
 		json: true,
 		headers: { 'User-Agent': 'request', 'Authorization': 'Bearer Njza3sFCRA9Ryj9ThYlmY38oXieiZrYlQvvTIe1DUnG89_VajllQVQntnGhSLpKHofkjdo7GYbDuQcyD0sgeaas3E5X6A31g6qMEzv1UmBg1p4EX_utsDkASwHPJWnYx' }
 	}, (err, response, data) => {
